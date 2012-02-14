@@ -1,0 +1,98 @@
+#slideshow {
+    width: 950px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/* CSS for slideshow animation */
+#slide-container {
+    margin: 0 auto; 
+    position:relative;
+    width: 835px; /* add 20px for cushion */
+    height: 75px;
+    overflow: hidden;
+}
+
+#slideInner {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+   
+}
+
+.slide {
+    margin: 0 auto;
+    float: left;
+    width: 835px;
+}
+
+/* Navigation slide show navigation elements */
+/* left and right arrows */
+.caret {
+    width: 32px;
+    height: 44px;
+    background-image: url(../../images/path_to_nav_arrow);
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    top: 18%
+}
+
+#previous {
+    background-position: -1400px -68px;  /* Set to correct position for your slides */
+    left: 0;
+}
+
+#previous:hover {
+    background-position: -1401px -27px; /* Set to correct position for your slides */
+}
+
+#next {
+    background-position: -1479px -68px; /* Set to correct position for your slides */
+    right: 0;
+}
+
+#next:hover {
+    background-position: -1481px -24px;
+}
+
+/* Style for navigation dots */
+#slide-nav ul {
+    list-style: none;
+}
+
+#slideshow li {
+    display: inline;
+}
+
+#slide-nav a {
+    display: block;
+    float: left;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
+
+/* 
+    Individual slide style 
+    Set styles for individual slides here
+*/
+
+
+/* These styles are just for testing */
+
+.slide {
+    color: white;
+    text-align: center;
+}
+#slide1 {
+    background-color: gray;
+}
+
+#slide2 {
+    background-color: blue;
+}
+
+#slide3 {
+    background-color: green;
+}

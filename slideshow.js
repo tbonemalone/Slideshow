@@ -1,4 +1,6 @@
 // start slide show stuff
+// add autoPlay enable as one of the options
+// add delay between autoPlay slides as an option also
    
   var slideshow_options = {
     // slide show config options go here.
@@ -6,6 +8,8 @@
     currentPosition : 0,
     numberOfSlides : 3,
     slides : $(".slide"),
+    autoPlay_enable : true,
+    autoPlay_delay : 2000
   }
 
   var slideshow = {
@@ -20,7 +24,7 @@
       $('#previous, #next').hide();
 
       // autoplay commented out for the time being
-      t = setInterval(slideshow.autoPlay, 5000);
+      t = setInterval(slideshow.autoPlay, slideshow_options.autoPlay_delay);
 
 
       // slideshow animations. Left or Right arrow click
@@ -33,7 +37,8 @@
       });
 
       // slideshow nav
-      $('#hp-tour #slide-nav a').click(function() {
+      $('#slide-nav a').click(function() {
+        console.log('click');
         var navMarker = $(this).attr('id');
         var destinationPosition = parseInt(/\d/.exec(navMarker));
         
@@ -48,24 +53,26 @@
 
     }, //end init
 
+
     manageControls : function(position) {
       // if show on first slide then hide control to see previous slide
       // if show on last slide then hide control to see next slide
       if (position === 0) { 
-       $(previous).hide();
+       $('#previous').hide();
       } 
       else {
-        $(previous).show();
+        $('#previous').show();
       }
 
       // hide right arrow
       if(position === slideshow_options.numberOfSlides-1) { 
-        $(next).hide();  
+        $('#next').hide();  
       }
       else {
-        $(next).show();
+        $('#next').show();
       }
     }, // end manageControls
+
 
     updateNavIcon : function(position) {
       // update nav icons
@@ -78,18 +85,20 @@
       $('#slide-nav').find(targetId).addClass('selected');
     }, // end updateNavIcon
 
+
     autoPlay : function() {
       // Slide through 
       if (slideshow_options.currentPosition === 2) {
         slideshow_options.currentPosition = 0;
         slideshow.moveSlide(slideshow_options.currentPosition);
-        slideshow.upadateNavIcon(slideshow_options.currentPosition);
+        slideshow.updateNavIcon(slideshow_options.currentPosition);
       } else {
         slideshow_options.currentPosition += 1;
         slideshow.moveSlide(slideshow_options.currentPosition);
         slideshow.updateNavIcon(slideshow_options.currentPosition);
       }
     }, // end autoPlay
+
 
     moveSlide : function(position) {
       // function to actually move the slides by updating left postion.
